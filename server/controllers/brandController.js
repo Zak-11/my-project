@@ -1,11 +1,16 @@
-class BrandController {
-    async create(reg, res) {
+const {Brand} = require('../models/models')
 
+
+class BrandController {
+    async create(req, res) {
+        const {name} = req.params
+        const brand = await Brand.create({name})
+        return res.json(brand)
     }
 
-    async getAll(reg, res) {
-
-
+    async getAll(req, res) {
+        const brands = await Brand.findAll()
+        return res.json(brands)
     }
 
 }
